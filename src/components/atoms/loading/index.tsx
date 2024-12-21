@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { colors } from '@/styles/theme';
-import { ActivityIndicator } from 'react-native';
-import { s } from './styles';
+import * as Styled from './styles';
 
 function Loading() {
-	return <ActivityIndicator style={s.Container} color={colors.acent} />;
+	return <Styled.ActivityIndicator color={colors.acent} />;
 }
 
 export default Loading;

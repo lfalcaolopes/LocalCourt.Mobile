@@ -1,12 +1,12 @@
-
 import { colors } from '@/styles/theme';
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export const s = StyleSheet.create({
-  Container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.gray[100]
-  }
-});
+const ActivityIndicator = styled.ActivityIndicator`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	background-color: ${colors.gray[100]};
+`;
+
+export { ActivityIndicator };
