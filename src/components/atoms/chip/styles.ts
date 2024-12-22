@@ -23,7 +23,6 @@ const Icon = styled.Image`
 const Text = styled.Text`
 	font-family: ${fontFamily.semiBold};
 	font-size: 10px;
-	letter-spacing: 4%;
 	color: ${colors.gray[700]};
 `;
 
