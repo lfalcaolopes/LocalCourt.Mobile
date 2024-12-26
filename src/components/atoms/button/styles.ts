@@ -5,7 +5,7 @@ import { ButtonProps, ButtonVariant } from './index';
 type ButtonStyleProps = Pick<ButtonProps, 'color' | 'variant'>;
 
 const Container = styled.View<ButtonStyleProps>`
-	width: fit-content;
+	align-self: flex-start;
 	padding: 8px 12px;
 	border-radius: 8px;
 	border-width: 2px;

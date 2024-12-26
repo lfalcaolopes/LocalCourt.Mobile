@@ -5,10 +5,10 @@ import { ChipProps } from './index';
 type SelectedProps = Pick<ChipProps, 'selected'>;
 
 const Container = styled.View<SelectedProps>`
-	width: fit-content;
 	background-color: ${colors.gray[50]};
 	display: flex;
 	flex-direction: row;
+	align-self: flex-start;
 	padding: 4px 8px;
 	gap: 4px;
 	border: 2px solid ${(props: SelectedProps) => (props.selected ? colors.acent : colors.gray[200])};

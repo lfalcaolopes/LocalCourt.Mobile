@@ -20,6 +20,7 @@ interface TextProps {
 }
 
 const Text = styled.Text<{ isRating: TextProps }>`
+	${({ isRating }: TextProps) => !isRating && 'flex: 1'};
 	font-family: ${fontFamily.regular};
 	font-size: ${({ isRating }: TextProps) => (isRating ? '10px' : '8px')};
 	color: ${({ isRating }: TextProps) => (isRating ? colors.gray[800] : colors.gray[600])};

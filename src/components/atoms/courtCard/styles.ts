@@ -20,6 +20,7 @@ const Container = styled.View<{ styleVariant: ContainerProps }>`
 		styleVariant === 'horizontal' &&
 		`
     flex-direction: row;
+		height: 80px;
   `}
 	${({ styleVariant }: ContainerProps) =>
 		styleVariant === 'vertical' &&
