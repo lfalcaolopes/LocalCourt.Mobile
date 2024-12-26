@@ -2,10 +2,14 @@ import React from 'react';
 
 import * as Styled from './styles';
 
-function SectionTitle() {
+interface SectionTitleProps {
+	children: React.ReactNode;
+}
+
+function SectionTitle({ children }: SectionTitleProps) {
 	return (
 		<Styled.Container>
-			<Styled.Title>SectionTitle</Styled.Title>
+			<Styled.Title>{children}</Styled.Title>
 			<Styled.Divider />
 		</Styled.Container>
 	);
