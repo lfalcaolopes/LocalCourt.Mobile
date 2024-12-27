@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+import { colors } from '@/styles/theme';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 import { TextInput, TouchableWithoutFeedback } from 'react-native';
 import * as Styled from './styles';
@@ -29,6 +30,7 @@ function TextField({ icon, name, placeholder, control, iconPosition = 'left' }: 
 							onChangeText={onChange}
 							value={value}
 							placeholder={placeholder}
+							placeholderTextColor={colors.gray[400]}
 						/>
 					)}
 				/>
