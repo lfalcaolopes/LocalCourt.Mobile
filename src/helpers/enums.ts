@@ -1,0 +1,22 @@
+export enum ECourtStatus {
+	ACTIVE = 'ACTIVE',
+	INACTIVE = 'INACTIVE'
+}
+
+export enum EReservationStatus {
+	CONFIRMED = 'CONFIRMED',
+	AWAITING_PAYMENT = 'AWAITING_PAYMENT',
+	CANCELLED = 'CANCELLED',
+	CONCLUDED = 'CONCLUDED'
+}
+
+export enum ECourtCardVariant {
+	DASHBOARD = 'DASHBOARD',
+	MY_COURTS = 'MY_COURTS',
+	MY_RESERVATIONS = 'MY_RESERVATIONS'
+}
+
+export enum ECourtCardStyleVariant {
+	HORIZONTAL = 'HORIZONTAL',
+	VERTICAL = 'VERTICAL'
+}
