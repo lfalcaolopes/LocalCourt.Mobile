@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReservationStatus from '@/components/reservationStatus';
+import ReservationStatus from '@/components/atoms/reservationStatus';
 import { formatRentalDateTime } from '@/helpers/dateFormating';
 import {
 	ECourtCardStyleVariant,
