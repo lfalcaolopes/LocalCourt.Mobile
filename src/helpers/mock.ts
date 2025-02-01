@@ -112,6 +112,76 @@ const courtsMock: ICourt[] = [
 		imagesUrl: [testImage, testImage], // nao existe na entidade
 		manager: usersMock[1], // nao existe na entidade
 		address: addressesMock[1]
+	},
+	{
+		id: '3',
+		name: 'Court 3',
+		price: 100,
+		rating: 5,
+		modalities: ['Futebol', 'Basquete'],
+		additionals: ['Vestiário'],
+		status: true, // nao existe na entidade
+		availabilityStart: '10:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '20:00', // nao existe na entidade (pensar em nomes melhores)
+		imagesUrl: [testImage, testImage], // nao existe na entidade
+		manager: usersMock[1], // nao existe na entidade
+		address: addressesMock[1]
+	},
+	{
+		id: '4',
+		name: 'Court 4',
+		price: 100,
+		rating: 5,
+		modalities: ['Futebol', 'Basquete'],
+		additionals: ['Vestiário'],
+		status: true, // nao existe na entidade
+		availabilityStart: '10:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '20:00', // nao existe na entidade (pensar em nomes melhores)
+		imagesUrl: [testImage, testImage], // nao existe na entidade
+		manager: usersMock[1], // nao existe na entidade
+		address: addressesMock[1]
+	},
+	{
+		id: '5',
+		name: 'Court 5',
+		price: 100,
+		rating: 5,
+		modalities: ['Futebol', 'Basquete'],
+		additionals: ['Vestiário'],
+		status: true, // nao existe na entidade
+		availabilityStart: '10:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '20:00', // nao existe na entidade (pensar em nomes melhores)
+		imagesUrl: [testImage, testImage], // nao existe na entidade
+		manager: usersMock[1], // nao existe na entidade
+		address: addressesMock[1]
+	},
+	{
+		id: '6',
+		name: 'Court 6',
+		price: 100,
+		rating: 5,
+		modalities: ['Futebol', 'Basquete'],
+		additionals: ['Vestiário'],
+		status: true, // nao existe na entidade
+		availabilityStart: '10:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '20:00', // nao existe na entidade (pensar em nomes melhores)
+		imagesUrl: [testImage, testImage], // nao existe na entidade
+		manager: usersMock[1], // nao existe na entidade
+		address: addressesMock[1]
+	},
+	{
+		id: '7',
+		name: 'Court 7',
+		price: 100,
+		rating: 5,
+		modalities: ['Futebol', 'Basquete'],
+		additionals: ['Vestiário'],
+		status: true, // nao existe na entidade
+		availabilityStart: '10:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '20:00', // nao existe na entidade (pensar em nomes melhores)
+		imagesUrl: [testImage, testImage], // nao existe na entidade
+		manager: usersMock[1], // nao existe na entidade
+		address: addressesMock[1]
 	}
 ];
 
@@ -141,6 +211,28 @@ const rentalsMock: IRental[] = [
 	},
 	{
 		id: '2',
+		court: courtsMock[1],
+		user: usersMock[1],
+		startRent: '2024-11-12T14:00:00+00:00',
+		duration: 5,
+		modality: 'Basquete', // nao existe na entidade
+		additionals: ['Vestiário'], // nao existe na entidade (salvar porque o additionals da court pode mudar? [parece errado])
+		price: 500, // nao existe na entidade (salvar porque o preco da court pode mudar)
+		status: 'CONFIRMED' // nao existe na entidade
+	},
+	{
+		id: '3',
+		court: courtsMock[1],
+		user: usersMock[1],
+		startRent: '2024-11-12T14:00:00+00:00',
+		duration: 5,
+		modality: 'Basquete', // nao existe na entidade
+		additionals: ['Vestiário'], // nao existe na entidade (salvar porque o additionals da court pode mudar? [parece errado])
+		price: 500, // nao existe na entidade (salvar porque o preco da court pode mudar)
+		status: 'CONFIRMED' // nao existe na entidade
+	},
+	{
+		id: '4',
 		court: courtsMock[1],
 		user: usersMock[1],
 		startRent: '2024-11-12T14:00:00+00:00',
