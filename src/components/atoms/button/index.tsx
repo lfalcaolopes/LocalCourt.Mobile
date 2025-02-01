@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 
 import * as Styled from './styles';
 
@@ -13,17 +12,22 @@ export interface ButtonProps {
 	onClick: () => void;
 	color: string;
 	variant?: ButtonVariant;
+	fullWidth?: boolean;
 }
 
-function Button({ children, onClick, color, variant = ButtonVariant.FILL }: ButtonProps) {
+function Button({
+	children,
+	onClick,
+	color,
+	variant = ButtonVariant.FILL,
+	fullWidth = false
+}: ButtonProps) {
 	return (
-		<TouchableOpacity onPress={onClick}>
-			<Styled.Container color={color} variant={variant}>
-				<Styled.Text color={color} variant={variant}>
-					{children}
-				</Styled.Text>
-			</Styled.Container>
-		</TouchableOpacity>
+		<Styled.Container onPress={onClick} color={color} variant={variant} fullWidth={fullWidth}>
+			<Styled.Text color={color} variant={variant}>
+				{children}
+			</Styled.Text>
+		</Styled.Container>
 	);
 }
 

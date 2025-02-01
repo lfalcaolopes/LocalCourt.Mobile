@@ -2,28 +2,37 @@ import React, { useRef } from 'react';
 
 import { colors } from '@/styles/theme';
 import { Control, Controller, FieldValues } from 'react-hook-form';
-import { TextInput, TouchableWithoutFeedback } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 import * as Styled from './styles';
 
-export interface TextFieldProps {
-	name: string;
-	control: Control<FieldValues>;
+export interface TextFieldProps<T extends FieldValues> extends TextInputProps {
+	name: keyof T;
+	control: Control<T>;
 	icon?: React.ReactNode;
 	iconPosition?: 'left' | 'right';
 	placeholder?: string;
+	errorMessage?: string;
 }
 
-function TextField({ icon, name, placeholder, control, iconPosition = 'left' }: TextFieldProps) {
+function TextField<T extends FieldValues>({
+	icon,
+	name,
+	placeholder,
+	control,
+	iconPosition = 'left',
+	errorMessage,
+	...props
+}: TextFieldProps<T>) {
 	const inputRef = useRef<TextInput>(null);
 
 	return (
-		<TouchableWithoutFeedback onPress={() => inputRef.current?.focus()}>
-			<Styled.Container iconPosition={iconPosition}>
+		<Styled.Container>
+			<Styled.TextField onPress={() => inputRef.current?.focus()} iconPosition={iconPosition}>
 				{icon}
 				<Controller
 					control={control}
-					name={name}
-					defaultValue=""
+					name={name as never}
+					defaultValue={'' as never}
 					render={({ field: { onChange, value } }) => (
 						<Styled.TextInput
 							ref={inputRef}
@@ -31,11 +40,13 @@ function TextField({ icon, name, placeholder, control, iconPosition = 'left' }: 
 							value={value}
 							placeholder={placeholder}
 							placeholderTextColor={colors.gray[400]}
+							{...props}
 						/>
 					)}
 				/>
-			</Styled.Container>
-		</TouchableWithoutFeedback>
+			</Styled.TextField>
+			<Styled.Error>{errorMessage}</Styled.Error>
+		</Styled.Container>
 	);
 }
 
