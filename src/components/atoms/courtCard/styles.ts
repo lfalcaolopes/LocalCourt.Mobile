@@ -13,9 +13,8 @@ const Container = styled.View<{ styleVariant: ContainerProps }>`
 	gap: 8px;
 	padding: 8px;
 	background-color: ${colors.gray[100]};
-	border: 1px solid ${colors.gray[300]};
+	border: 1px solid ${colors.gray[200]};
 	border-radius: 8px;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 
 	${({ styleVariant }: ContainerProps) =>
 		styleVariant === ECourtCardStyleVariant.HORIZONTAL &&
