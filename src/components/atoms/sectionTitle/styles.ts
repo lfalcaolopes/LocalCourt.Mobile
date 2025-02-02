@@ -9,6 +9,7 @@ const Container = styled.View`
 `;
 
 const Title = styled.Text`
+	white-space: nowrap;
 	font-family: ${fontFamily.semiBold};
 	color: ${colors.gray[900]};
 	font-size: 16px;
