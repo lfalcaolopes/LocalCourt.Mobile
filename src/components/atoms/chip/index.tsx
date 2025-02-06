@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ImageSourcePropType, TouchableOpacity } from 'react-native';
 import * as Styled from './styles';
 
 export interface ChipProps {
 	children: React.ReactNode;
-	icon?: ImageSourcePropType;
+	icon?: ImageSourcePropType | ReactNode;
 	selected?: boolean;
 	onPress?: () => void;
 }
@@ -13,7 +13,7 @@ export interface ChipProps {
 function Chip({ children, icon, selected, onPress }: ChipProps) {
 	const content = (
 		<Styled.Container selected={selected}>
-			{icon && <Styled.Icon source={icon} />}
+			{icon ? React.isValidElement(icon) ? icon : <Styled.Icon source={icon} /> : null}
 			<Styled.Text>{children}</Styled.Text>
 		</Styled.Container>
 	);

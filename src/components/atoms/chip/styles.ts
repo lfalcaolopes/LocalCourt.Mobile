@@ -8,6 +8,7 @@ const Container = styled.View<SelectedProps>`
 	background-color: ${colors.gray[50]};
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 	align-self: flex-start;
 	padding: 4px 8px;
 	gap: 4px;
@@ -21,6 +22,7 @@ const Icon = styled.Image`
 `;
 
 const Text = styled.Text`
+	height: 16px;
 	font-family: ${fontFamily.semiBold};
 	font-size: 10px;
 	color: ${colors.gray[700]};

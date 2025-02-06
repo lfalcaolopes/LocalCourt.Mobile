@@ -5,6 +5,7 @@ import { TextFieldProps } from './index';
 type iconPositionType = Pick<TextFieldProps<never>, 'iconPosition'>;
 
 const Container = styled.View`
+	flex-shrink: 1;
 	display: flex;
 	flex-direction: column;
 	gap: 1px;
@@ -12,7 +13,6 @@ const Container = styled.View`
 
 const TextField = styled.Pressable<iconPositionType>`
 	width: 100%;
-	height: 40px;
 	display: flex;
 	flex-direction: ${(props: iconPositionType) =>
 		props.iconPosition === 'left' ? 'row' : 'row-reverse'};

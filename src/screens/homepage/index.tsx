@@ -1,4 +1,5 @@
 import { CourtCard, SectionTitle } from '@/components/atoms';
+import { CourtsFilter } from '@/components/molecules';
 import { ECourtCardStyleVariant, ECourtCardVariant } from '@/helpers/enums';
 import { ICourt, IRental, courtsMock, rentalsMock } from '@/helpers/mock';
 import { colors } from '@/styles/theme';
@@ -12,6 +13,7 @@ import * as Styled from './styles';
 function Homepage() {
 	const [lastRentals, setLastRentals] = useState<IRental[]>([]);
 	const [courts, setCourts] = useState<ICourt[]>([]);
+	const [filterIsVisible, setFilterIsVisible] = useState(false);
 
 	function getLastRentals() {
 		return rentalsMock;
@@ -63,7 +65,7 @@ function Homepage() {
 						<Styled.CourtSectionHeader>
 							<SectionTitle>Encontre Sua Quadra</SectionTitle>
 
-							<Styled.CourtsFilter onPress={() => console.log('filter')}>
+							<Styled.CourtsFilter onPress={() => setFilterIsVisible(true)}>
 								<Feather name="filter" size={16} color={colors.acent} />
 
 								<Styled.Filter>Filtrar</Styled.Filter>
@@ -87,7 +89,9 @@ function Homepage() {
 				</Styled.Body>
 			</Styled.Container>
 
-			<Styled.Map onPress={() => console.log('map')}>
+			<CourtsFilter isVisible={filterIsVisible} onClose={() => setFilterIsVisible(false)} />
+
+			<Styled.Map onPress={() => console.log('map')} filterIsVisible={filterIsVisible}>
 				<Feather name="map" size={16} color={colors.gray[100]} />
 				<Styled.MapText>Mapa</Styled.MapText>
 			</Styled.Map>

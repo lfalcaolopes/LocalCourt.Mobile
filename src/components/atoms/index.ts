@@ -1,5 +1,6 @@
 import Button from './button';
 import Chip from './chip';
+import CollapsibleSection from './collapsibleSection';
 import CourtCard from './courtCard';
 import CourtCardDescription from './courtCardDescription';
 import Divisor from './divisor';
@@ -10,6 +11,7 @@ import SectionTitle from './sectionTitle';
 export {
 	Button,
 	Chip,
+	CollapsibleSection,
 	CourtCard,
 	CourtCardDescription,
 	Divisor,

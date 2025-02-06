@@ -1,3 +1,5 @@
+import { format, toZonedTime } from 'date-fns-tz';
+
 function formatRentalDateTime(dateTimeString: string, duration: number) {
 	const date = new Date(dateTimeString);
 
@@ -16,4 +18,12 @@ function formatRentalDateTime(dateTimeString: string, duration: number) {
 	return { rentalDate, rentalStartTime, rentalEndTime };
 }
 
-export { formatRentalDateTime };
+function convertToSaoPauloTime(date: Date): string {
+	const timeZoneSP = 'America/Sao_Paulo';
+
+	const zonedDate = toZonedTime(date, timeZoneSP);
+	const formattedDate = format(zonedDate, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: timeZoneSP });
+	return formattedDate;
+}
+
+export { convertToSaoPauloTime, formatRentalDateTime };

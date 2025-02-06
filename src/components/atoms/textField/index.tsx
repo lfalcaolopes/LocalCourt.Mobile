@@ -11,6 +11,7 @@ export interface TextFieldProps<T extends FieldValues> extends TextInputProps {
 	icon?: React.ReactNode;
 	iconPosition?: 'left' | 'right';
 	placeholder?: string;
+	showError?: boolean;
 	errorMessage?: string;
 }
 
@@ -20,6 +21,7 @@ function TextField<T extends FieldValues>({
 	placeholder,
 	control,
 	iconPosition = 'left',
+	showError = true,
 	errorMessage,
 	...props
 }: TextFieldProps<T>) {
@@ -45,7 +47,7 @@ function TextField<T extends FieldValues>({
 					)}
 				/>
 			</Styled.TextField>
-			<Styled.Error>{errorMessage}</Styled.Error>
+			{showError && <Styled.Error>{errorMessage}</Styled.Error>}
 		</Styled.Container>
 	);
 }

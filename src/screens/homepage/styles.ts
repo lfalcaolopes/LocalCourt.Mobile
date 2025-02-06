@@ -6,7 +6,8 @@ const Container = styled(ScrollView).attrs({
 	contentContainerStyle: {
 		display: 'flex',
 		gap: 24,
-		padding: 16
+		padding: 16,
+		paddingTop: 8
 	}
 })``;
 
@@ -16,7 +17,7 @@ const Header = styled.View`
 	align-items: center;
 	justify-content: space-between;
 	background-color: ${colors.gray[100]};
-	padding: 16px 0;
+	padding-bottom: 16px;
 `;
 
 const Menu = styled.TouchableOpacity`
@@ -77,20 +78,19 @@ const Courts = styled.View`
 	padding-bottom: 80px;
 `;
 
-const Map = styled.Pressable`
-	display: flex;
+const Map = styled.Pressable<{ filterIsVisible: boolean }>`
+	display: ${({ filterIsVisible }: { filterIsVisible: boolean }) =>
+		filterIsVisible ? 'none' : 'flex'};
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
 	padding: 8px 16px;
-	border-radius: 16px;
+	border-radius: 20px;
 
 	position: absolute;
 	bottom: 20px;
 	align-self: center;
-
-	z-index: 1;
 
 	background-color: ${colors.acent};
 `;
