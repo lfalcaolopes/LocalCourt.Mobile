@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Image } from 'react-native';
 
-import LogoAndLettering from '../../../assets/logo/Logo.png';
+import LogoAndLettering from '../../../assets/logo/LogoAndLettering.png';
 
 import SignInForm from '@/components/organisms/signInForm';
 import SignUpForm from '@/components/organisms/signUpForm';
