@@ -4,25 +4,34 @@ import SoccerBall from '../../assets/icons/SoccerBall.png';
 import TennisBall from '../../assets/icons/TennisBall.png';
 import Volleyball from '../../assets/icons/Volleyball.png';
 
-export const DefaultModalities = {
-	soccer: {
+export const DefaultModalities = [
+	{
+		id: '1',
 		name: 'Futebol',
 		icon: SoccerBall
 	},
-	basketball: {
+	{
+		id: '2',
 		name: 'Basquete',
 		icon: Basketball
 	},
-	beachTennis: {
+	{
+		id: '3',
 		name: 'Beach Tennis',
 		icon: BeachTennisBall
 	},
-	tennis: {
+	{
+		id: '4',
 		name: 'Tênis',
 		icon: TennisBall
 	},
-	volleyball: {
+	{
+		id: '5',
 		name: 'Vôlei',
 		icon: Volleyball
+	},
+	{
+		id: '6',
+		name: 'Outros'
 	}
-};
+];
