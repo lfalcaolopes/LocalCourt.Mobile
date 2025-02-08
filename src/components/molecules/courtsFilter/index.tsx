@@ -239,7 +239,7 @@ function CourtsFilter({ isVisible, onClose }: CourtsFilterProps) {
 											key={modality.id}
 											icon={<MaterialIcons name="star" size={16} color="#EBC351" />}
 											selected={value === modality.id}
-											onPress={() => onChange(modality.id)}
+											onPress={() => onChange(modality.id !== value ? modality.id : undefined)}
 										>
 											{modality.name}
 										</Chip>
