@@ -53,7 +53,7 @@ function CourtCard({
 				<Styled.AdditionalInfo>
 					{variant === ECourtCardVariant.DASHBOARD && (
 						<>
-							<CourtCardDescription type="rating">{court.rating}</CourtCardDescription>
+							<CourtCardDescription type="rating">{court.rating.toFixed(1)}</CourtCardDescription>
 							<Styled.ModalitiesText>{`${court.modalities[0]} +${noShowModalities}`}</Styled.ModalitiesText>
 						</>
 					)}
