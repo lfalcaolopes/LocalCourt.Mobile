@@ -1,5 +1,6 @@
-import { CourtCard, SectionTitle } from '@/components/atoms';
-import { CourtsFilter } from '@/components/molecules';
+import SectionTitle from '@/components/atoms/sectionTitle';
+import CourtCard from '@/components/molecules/courtCard';
+import CourtsFilter from '@/components/organisms/courtsFilter';
 import { ECourtCardStyleVariant, ECourtCardVariant } from '@/helpers/enums';
 import { ICourt, IRental, courtsMock, rentalsMock } from '@/helpers/mock';
 import { colors } from '@/styles/theme';

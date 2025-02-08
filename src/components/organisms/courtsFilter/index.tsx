@@ -1,6 +1,6 @@
 import { Button, Chip } from '@/components/atoms';
-import CollapsibleSection from '@/components/atoms/collapsibleSection';
 import TextField from '@/components/atoms/textField';
+import CollapsibleSection from '@/components/molecules/collapsibleSection';
 import { convertToSaoPauloTime } from '@/helpers/dateFormating';
 import { DefaultExtras } from '@/helpers/defaultExtras';
 import { DefaultModalities } from '@/helpers/defaultModalities';

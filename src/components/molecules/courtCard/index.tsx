@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CourtCardDescription from '@/components/atoms/courtCardDescription';
+import CourtStatus from '@/components/atoms/courtStatus';
 import ReservationStatus from '@/components/atoms/reservationStatus';
 import { formatRentalDateTime } from '@/helpers/dateFormating';
 import {
@@ -9,8 +11,6 @@ import {
 	EReservationStatus
 } from '@/helpers/enums';
 import { ICourt, IRental } from '@/helpers/mock';
-import CourtCardDescription from '../courtCardDescription';
-import CourtStatus from '../courtStatus';
 import * as Styled from './styles';
 
 interface CourtCardProps {
