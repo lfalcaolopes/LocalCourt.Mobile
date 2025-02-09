@@ -6,6 +6,7 @@ interface IUser {
 	name: string;
 	email: string;
 	phoneNumber: string;
+	image: string;
 	rating: number;
 }
 
@@ -15,6 +16,7 @@ const usersMock: IUser[] = [
 		name: 'John Doe',
 		email: 'johndoe@gmail.com',
 		phoneNumber: '123456789', // nao existe na entidade
+		image: 'https://github.com/lfalcaolopes.png',
 		rating: 4.5
 	},
 	{
@@ -22,6 +24,7 @@ const usersMock: IUser[] = [
 		name: 'Jane Doe',
 		email: 'janedoe@gmail.com',
 		phoneNumber: '987654321', // nao existe na entidade
+		image: 'https://github.com/lfalcaolopes.png',
 		rating: 4
 	}
 ];
