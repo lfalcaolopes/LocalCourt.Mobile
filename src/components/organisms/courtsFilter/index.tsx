@@ -1,4 +1,5 @@
 import { Button, Chip } from '@/components/atoms';
+import ArrowButton from '@/components/atoms/arrowButton';
 import TextField from '@/components/atoms/textField';
 import CollapsibleSection from '@/components/molecules/collapsibleSection';
 import { convertToSaoPauloTime } from '@/helpers/dateFormating';
@@ -92,9 +93,8 @@ function CourtsFilter({ isVisible, onClose }: CourtsFilterProps) {
 		>
 			<Styled.Container>
 				<Styled.Header>
-					<TouchableOpacity onPress={() => closeFilterSheet()}>
-						<MaterialIcons name="chevron-left" size={24} color={colors.gray[800]} />
-					</TouchableOpacity>
+					<ArrowButton onPress={() => closeFilterSheet()} direction="left" />
+
 					<Styled.Title>Filtros</Styled.Title>
 					<TouchableOpacity onPress={() => onReset()}>
 						<MaterialIcons name="refresh" size={24} color={colors.gray[800]} />
