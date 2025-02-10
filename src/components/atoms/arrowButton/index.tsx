@@ -6,14 +6,14 @@ import Feather from '@expo/vector-icons/Feather';
 
 interface ArrowButtonProps {
 	onPress: () => void;
-	direction: 'up' | 'right' | 'down' | 'left';
+	direction?: 'up' | 'right' | 'down' | 'left';
 	size?: number;
 	color?: string;
 }
 
 function ArrowButton({
 	onPress,
-	direction,
+	direction = 'left',
 	size = 24,
 	color = colors.gray[800]
 }: ArrowButtonProps) {
