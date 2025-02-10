@@ -2,13 +2,13 @@ import React from 'react';
 
 import CourtCardDescription from '@/components/atoms/courtCardDescription';
 import CourtStatus from '@/components/atoms/courtStatus';
-import ReservationStatus from '@/components/atoms/reservationStatus';
+import RentalStatus from '@/components/atoms/rentalStatus';
 import { formatRentalDateTime } from '@/helpers/dateFormating';
 import {
 	ECourtCardStyleVariant,
 	ECourtCardVariant,
 	ECourtStatus,
-	EReservationStatus
+	ERentalStatus
 } from '@/helpers/enums';
 import { ICourt, IRental } from '@/helpers/mock';
 import * as Styled from './styles';
@@ -32,8 +32,12 @@ function CourtCard({
 		rental?.duration ?? 0
 	);
 
+	function handleCardPress() {
+		console.log(variant, court.name, rental?.id);
+	}
+
 	return (
-		<Styled.Container styleVariant={styleVariant}>
+		<Styled.Container onPress={handleCardPress} styleVariant={styleVariant}>
 			<Styled.Preview source={court.imagesUrl[0]} />
 
 			<Styled.Content>
@@ -43,7 +47,7 @@ function CourtCard({
 						{`${court.address.district}, ${court.address.city}`}
 					</CourtCardDescription>
 					<CourtCardDescription type="price">
-						{variant === ECourtCardVariant.MY_RESERVATIONS
+						{variant === ECourtCardVariant.MY_RENTALS
 							? `R$ ${rental?.price.toFixed(2).replace('.', ',')}`
 							: `A partir de R$ ${court.price.toFixed(2).replace('.', ',')}/h`}
 					</CourtCardDescription>
@@ -62,9 +66,9 @@ function CourtCard({
 							<CourtStatus status={court.status ? ECourtStatus.ACTIVE : ECourtStatus.INACTIVE} />
 						</>
 					)}
-					{variant === ECourtCardVariant.MY_RESERVATIONS && (
+					{variant === ECourtCardVariant.MY_RENTALS && (
 						<>
-							<ReservationStatus status={rental?.status as EReservationStatus} />
+							<RentalStatus status={rental?.status as ERentalStatus} />
 							<Styled.DateText>
 								{`${rentalDate} ${rentalStartTime} - ${rentalEndTime}`}
 							</Styled.DateText>

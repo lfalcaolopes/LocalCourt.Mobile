@@ -4,7 +4,7 @@ import Chip from './chip';
 import CourtCardDescription from './courtCardDescription';
 import Divisor from './divisor';
 import Loading from './loading';
-import ReservationStatus from './reservationStatus';
+import RentalStatus from './rentalStatus';
 import SectionTitle from './sectionTitle';
 
 export {
@@ -14,6 +14,6 @@ export {
 	CourtCardDescription,
 	Divisor,
 	Loading,
-	ReservationStatus,
+	RentalStatus,
 	SectionTitle
 };

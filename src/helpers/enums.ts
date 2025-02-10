@@ -3,7 +3,7 @@ export enum ECourtStatus {
 	INACTIVE = 'INACTIVE'
 }
 
-export enum EReservationStatus {
+export enum ERentalStatus {
 	CONFIRMED = 'CONFIRMED',
 	AWAITING_PAYMENT = 'AWAITING_PAYMENT',
 	CANCELLED = 'CANCELLED',
@@ -13,7 +13,7 @@ export enum EReservationStatus {
 export enum ECourtCardVariant {
 	DASHBOARD = 'DASHBOARD',
 	MY_COURTS = 'MY_COURTS',
-	MY_RESERVATIONS = 'MY_RESERVATIONS'
+	MY_RENTALS = 'MY_RENTALS'
 }
 
 export enum ECourtCardStyleVariant {

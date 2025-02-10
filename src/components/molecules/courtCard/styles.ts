@@ -6,7 +6,7 @@ interface ContainerProps {
 	styleVariant: ECourtCardStyleVariant;
 }
 
-const Container = styled.View<{ styleVariant: ContainerProps }>`
+const Container = styled.Pressable<{ styleVariant: ContainerProps }>`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
