@@ -1,17 +1,13 @@
 import React from 'react';
 
+import { EButtonVariant } from '@/helpers/enums';
 import * as Styled from './styles';
-
-export enum ButtonVariant {
-	FILL = 'fill',
-	OUTLINE = 'outline'
-}
 
 export interface ButtonProps {
 	children: React.ReactNode;
 	onClick: () => void;
 	color: string;
-	variant?: ButtonVariant;
+	variant?: EButtonVariant;
 	fullWidth?: boolean;
 }
 
@@ -19,7 +15,7 @@ function Button({
 	children,
 	onClick,
 	color,
-	variant = ButtonVariant.FILL,
+	variant = EButtonVariant.FILL,
 	fullWidth = false
 }: ButtonProps) {
 	return (

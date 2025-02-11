@@ -20,3 +20,14 @@ export enum ECourtCardStyleVariant {
 	HORIZONTAL = 'HORIZONTAL',
 	VERTICAL = 'VERTICAL'
 }
+
+export enum EFormMode {
+	VIEW = 'VIEW',
+	CREATE = 'CREATE',
+	EDIT = 'EDIT'
+}
+
+export enum EButtonVariant {
+	FILL = 'fill',
+	OUTLINE = 'outline'
+}
