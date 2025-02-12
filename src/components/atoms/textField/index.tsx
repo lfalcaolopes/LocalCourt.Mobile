@@ -40,7 +40,7 @@ function TextField<T extends FieldValues>({
 					render={({ field: { onChange, value } }) => (
 						<Styled.TextInput
 							ref={inputRef}
-							onChangeText={onChange}
+							onChangeText={(text: string) => onChange(formatter ? formatter(text) : text)}
 							value={formatter ? formatter(value) : value}
 							placeholder={placeholder}
 							placeholderTextColor={colors.gray[400]}
