@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Chip } from '@/components/atoms';
 import { DefaultExtras } from '@/helpers/defaultExtras';
@@ -9,9 +9,22 @@ import * as Styled from './styles';
 interface ExtrasProps<T extends FieldValues> {
 	control: Control<T>;
 	mode?: EFormMode;
+	selectedExtras?: string[];
 }
 
-function Extras<T extends FieldValues>({ control, mode = EFormMode.VIEW }: ExtrasProps<T>) {
+function Extras<T extends FieldValues>({
+	selectedExtras,
+	control,
+	mode = EFormMode.VIEW
+}: ExtrasProps<T>) {
+	const displayedExtras = useMemo(
+		() =>
+			mode === EFormMode.VIEW && selectedExtras
+				? DefaultExtras.filter((extra) => selectedExtras.includes(extra.id))
+				: DefaultExtras,
+		[mode]
+	);
+
 	return (
 		<Controller
 			control={control}
@@ -20,10 +33,10 @@ function Extras<T extends FieldValues>({ control, mode = EFormMode.VIEW }: Extra
 			disabled={mode === EFormMode.VIEW}
 			render={({ field: { onChange, value, disabled } }) => (
 				<Styled.Options>
-					{DefaultExtras.map((extra) => (
+					{displayedExtras.map((extra) => (
 						<Chip
 							key={extra.id}
-							selected={value.includes(extra.id)}
+							selected={mode !== EFormMode.VIEW && value.includes(extra.id)}
 							onPress={
 								disabled
 									? undefined

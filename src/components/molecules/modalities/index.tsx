@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Chip } from '@/components/atoms';
 import { DefaultModalities } from '@/helpers/defaultModalities';
@@ -9,9 +9,22 @@ import * as Styled from './styles';
 interface ModalitiesProps<T extends FieldValues> {
 	control: Control<T>;
 	mode?: EFormMode;
+	selectedModalities?: string[];
 }
 
-function Modalities<T extends FieldValues>({ control, mode = EFormMode.VIEW }: ModalitiesProps<T>) {
+function Modalities<T extends FieldValues>({
+	control,
+	selectedModalities,
+	mode = EFormMode.VIEW
+}: ModalitiesProps<T>) {
+	const displayedModalities = useMemo(
+		() =>
+			mode === EFormMode.VIEW && selectedModalities
+				? DefaultModalities.filter((modality) => selectedModalities.includes(modality.id))
+				: DefaultModalities,
+		[mode]
+	);
+
 	return (
 		<Controller
 			control={control}
@@ -20,10 +33,10 @@ function Modalities<T extends FieldValues>({ control, mode = EFormMode.VIEW }: M
 			disabled={mode === EFormMode.VIEW}
 			render={({ field: { onChange, value, disabled } }) => (
 				<Styled.Options>
-					{DefaultModalities.map((modality) => (
+					{displayedModalities.map((modality) => (
 						<Chip
 							key={modality.id}
-							selected={value.includes(modality.id)}
+							selected={mode !== EFormMode.VIEW && value.includes(modality.id)}
 							icon={modality.icon || undefined}
 							onPress={
 								disabled
