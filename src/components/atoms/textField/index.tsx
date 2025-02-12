@@ -13,8 +13,7 @@ export interface TextFieldProps<T extends FieldValues> extends TextInputProps {
 	placeholder?: string;
 	showError?: boolean;
 	errorMessage?: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	formatter?: (value: any) => string;
+	formatter?: (value: string) => string;
 }
 
 function TextField<T extends FieldValues>({
