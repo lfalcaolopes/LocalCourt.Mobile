@@ -33,7 +33,6 @@ const TextInput = styled.TextInput`
 `;
 
 const Error = styled.Text`
-	height: 4px;
 	font-family: ${fontFamily.semiBold};
 	color: ${colors.error};
 	font-size: 10px;

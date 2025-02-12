@@ -10,7 +10,7 @@ const Container = styled.View`
 const Fields = styled.View`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 8px;
 `;
 
 export { Container, Fields };
