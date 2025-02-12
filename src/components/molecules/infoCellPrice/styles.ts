@@ -12,10 +12,22 @@ const Label = styled.Text`
 	color: ${colors.gray[500]};
 `;
 
-const Value = styled.Text`
+const Price = styled.View`
+	flex-direction: row;
+	gap: 4px;
+	align-items: flex-end;
+`;
+
+const PriceText = styled.Text`
 	font-family: ${fontFamily.regular};
-	font-size: 12px;
+	font-size: 14px;
 	color: ${colors.gray[900]};
 `;
 
-export { Container, Label, Value };
+const PerHour = styled.Text`
+	font-family: ${fontFamily.regular};
+	font-size: 10px;
+	color: ${colors.gray[500]};
+`;
+
+export { Container, Label, PerHour, Price, PriceText };

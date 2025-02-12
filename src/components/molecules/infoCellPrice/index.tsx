@@ -20,21 +20,27 @@ function InfoCellPrice<T extends FieldValues>({
 	mode = EFormMode.VIEW
 }: InfoCellPriceProps<T>) {
 	return (
-		<Styled.Container>
-			<Styled.Label>Preço por Hora</Styled.Label>
-
-			{mode === EFormMode.VIEW && <Styled.Value>{value}</Styled.Value>}
-			{mode !== EFormMode.VIEW && control && (
-				<TextField
-					control={control}
-					name="price"
-					placeholder="R$ 0,00"
-					errorMessage={errorMessage}
-					formatter={formatPrice}
-					keyboardType="numeric"
-				/>
+		<>
+			{mode === EFormMode.VIEW && (
+				<Styled.Price>
+					<Styled.PriceText>{value}</Styled.PriceText>
+					<Styled.PerHour>/ hora</Styled.PerHour>
+				</Styled.Price>
 			)}
-		</Styled.Container>
+			{mode !== EFormMode.VIEW && control && (
+				<Styled.Container>
+					<Styled.Label>Preço por Hora</Styled.Label>
+					<TextField
+						control={control}
+						name="price"
+						placeholder="R$ 0,00"
+						errorMessage={errorMessage}
+						formatter={formatPrice}
+						keyboardType="numeric"
+					/>
+				</Styled.Container>
+			)}
+		</>
 	);
 }
 
