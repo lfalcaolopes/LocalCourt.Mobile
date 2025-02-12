@@ -32,7 +32,7 @@ function InfoCellAvailability<T extends FieldValues>({
 					<Controller
 						control={control}
 						name={'availabilityStart' as never}
-						defaultValue={new Date('2025-02-11T08:00:00-03:00') as never}
+						defaultValue={convertToSaoPauloTime(new Date('2025-02-11T08:00:00-03:00')) as never}
 						render={({ field: { onChange, value } }) => (
 							<DateTimePicker
 								value={new Date(value)}
@@ -45,7 +45,7 @@ function InfoCellAvailability<T extends FieldValues>({
 					<Controller
 						control={control}
 						name={'availabilityEnd' as never}
-						defaultValue={new Date('2025-02-11T22:00:00-03:00') as never}
+						defaultValue={convertToSaoPauloTime(new Date('2025-02-11T22:00:00-03:00')) as never}
 						render={({ field: { onChange, value } }) => (
 							<DateTimePicker
 								value={new Date(value)}
