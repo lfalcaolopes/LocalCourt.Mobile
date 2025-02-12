@@ -13,6 +13,8 @@ export interface TextFieldProps<T extends FieldValues> extends TextInputProps {
 	placeholder?: string;
 	showError?: boolean;
 	errorMessage?: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	formatter?: (value: any) => string;
 }
 
 function TextField<T extends FieldValues>({
@@ -23,6 +25,7 @@ function TextField<T extends FieldValues>({
 	iconPosition = 'left',
 	showError = true,
 	errorMessage,
+	formatter,
 	...props
 }: TextFieldProps<T>) {
 	const inputRef = useRef<TextInput>(null);
@@ -39,7 +42,7 @@ function TextField<T extends FieldValues>({
 						<Styled.TextInput
 							ref={inputRef}
 							onChangeText={onChange}
-							value={value}
+							value={formatter ? formatter(value) : value}
 							placeholder={placeholder}
 							placeholderTextColor={colors.gray[400]}
 							{...props}
