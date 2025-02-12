@@ -7,7 +7,7 @@ import * as Styled from './styles';
 
 interface InfoCellProps<T extends FieldValues> {
 	label: string;
-	value: string;
+	value?: string;
 	mode?: EFormMode;
 	control?: Control<T>;
 	formName?: keyof T;

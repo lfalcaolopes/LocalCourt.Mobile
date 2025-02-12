@@ -7,7 +7,7 @@ import { Control, FieldValues } from 'react-hook-form';
 import * as Styled from './styles';
 
 interface InfoCellPriceProps<T extends FieldValues> {
-	value: string;
+	value?: string;
 	mode?: EFormMode;
 	control?: Control<T>;
 	errorMessage?: string;
@@ -21,7 +21,7 @@ function InfoCellPrice<T extends FieldValues>({
 }: InfoCellPriceProps<T>) {
 	return (
 		<>
-			{mode === EFormMode.VIEW && (
+			{mode === EFormMode.VIEW && value && (
 				<Styled.Price>
 					<Styled.PriceText>{value}</Styled.PriceText>
 					<Styled.PerHour>/ hora</Styled.PerHour>

@@ -8,8 +8,8 @@ import { Control, Controller, FieldValues } from 'react-hook-form';
 import * as Styled from './styles';
 
 interface InfoCellAvailabilityProps<T extends FieldValues> {
-	startValue: Date;
-	endValue: Date;
+	startValue?: Date;
+	endValue?: Date;
 	control: Control<T>;
 	mode?: EFormMode;
 }
@@ -24,7 +24,7 @@ function InfoCellAvailability<T extends FieldValues>({
 		<Styled.Container>
 			<Styled.Label>Disponibilidade</Styled.Label>
 
-			{mode === EFormMode.VIEW && (
+			{mode === EFormMode.VIEW && startValue && endValue && (
 				<Styled.Value>{`${formatTimeTo24Hour(startValue)} - ${formatTimeTo24Hour(endValue)}`}</Styled.Value>
 			)}
 			{mode !== EFormMode.VIEW && (
