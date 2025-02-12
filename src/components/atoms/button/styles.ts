@@ -7,7 +7,7 @@ type ButtonStyleProps = Pick<ButtonProps, 'color' | 'variant' | 'fullWidth'>;
 
 const Container = styled.TouchableOpacity<ButtonStyleProps>`
 	width: ${(props: ButtonStyleProps) => (props.fullWidth ? '100%' : 'fit-content')};
-	flex: 1;
+	flex-shrink: 1;
 	padding: 8px 16px;
 	border-radius: 8px;
 	border-width: 2px;
