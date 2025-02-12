@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { convertToSaoPauloTime } from '@/helpers/dateFormating';
+import { convertToSaoPauloTime, formatTimeTo24Hour } from '@/helpers/dateFormating';
 import { EFormMode } from '@/helpers/enums';
 import { colors } from '@/styles/theme';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -8,8 +8,8 @@ import { Control, Controller, FieldValues } from 'react-hook-form';
 import * as Styled from './styles';
 
 interface InfoCellAvailabilityProps<T extends FieldValues> {
-	startValue: string;
-	endValue: string;
+	startValue: Date;
+	endValue: Date;
 	control: Control<T>;
 	mode?: EFormMode;
 }
@@ -24,7 +24,9 @@ function InfoCellAvailability<T extends FieldValues>({
 		<Styled.Container>
 			<Styled.Label>Disponibilidade</Styled.Label>
 
-			{mode === EFormMode.VIEW && <Styled.Value>{`${startValue} - ${endValue}`}</Styled.Value>}
+			{mode === EFormMode.VIEW && (
+				<Styled.Value>{`${formatTimeTo24Hour(startValue)} - ${formatTimeTo24Hour(endValue)}`}</Styled.Value>
+			)}
 			{mode !== EFormMode.VIEW && (
 				<Styled.Fields>
 					<Controller

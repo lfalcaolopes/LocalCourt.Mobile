@@ -26,4 +26,12 @@ function convertToSaoPauloTime(date: Date): string {
 	return formattedDate;
 }
 
-export { convertToSaoPauloTime, formatRentalDateTime };
+const formatTimeTo24Hour = (date: Date): string => {
+	return date.toLocaleTimeString('pt-BR', {
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: false
+	});
+};
+
+export { convertToSaoPauloTime, formatRentalDateTime, formatTimeTo24Hour };
