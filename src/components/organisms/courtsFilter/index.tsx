@@ -2,10 +2,11 @@ import { Button, Chip } from '@/components/atoms';
 import ArrowButton from '@/components/atoms/arrowButton';
 import TextField from '@/components/atoms/textField';
 import CollapsibleSection from '@/components/molecules/collapsibleSection';
+import Extras from '@/components/molecules/extras';
+import Modalities from '@/components/molecules/modalities';
 import { convertToSaoPauloTime } from '@/helpers/dateFormating';
-import { DefaultExtras } from '@/helpers/defaultExtras';
-import { DefaultModalities } from '@/helpers/defaultModalities';
 import { DefaultRatings } from '@/helpers/defaultRatings';
+import { EFormMode } from '@/helpers/enums';
 import { colors } from '@/styles/theme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BottomSheet, { BottomSheetBackdrop, TouchableOpacity } from '@gorhom/bottom-sheet';
@@ -148,31 +149,7 @@ function CourtsFilter({ isVisible, onClose }: CourtsFilterProps) {
 
 					<Styled.FilterSection>
 						<Styled.FilterTitle>Modalidade</Styled.FilterTitle>
-						<Controller
-							control={control}
-							name="modalities"
-							defaultValue={[]}
-							render={({ field: { onChange, value } }) => (
-								<Styled.Options>
-									{DefaultModalities.map((modality) => (
-										<Chip
-											key={modality.id}
-											selected={value.includes(modality.id)}
-											icon={modality.icon || undefined}
-											onPress={() => {
-												if (value.includes(modality.id)) {
-													onChange(value.filter((v: string) => v !== modality.id));
-												} else {
-													onChange([...value, modality.id]);
-												}
-											}}
-										>
-											{modality.name}
-										</Chip>
-									))}
-								</Styled.Options>
-							)}
-						/>
+						<Modalities control={control} mode={EFormMode.EDIT} />
 					</Styled.FilterSection>
 
 					<View>
@@ -251,30 +228,7 @@ function CourtsFilter({ isVisible, onClose }: CourtsFilterProps) {
 
 					<Styled.FilterSection>
 						<Styled.FilterTitle>Extras</Styled.FilterTitle>
-						<Controller
-							control={control}
-							name="extras"
-							defaultValue={[]}
-							render={({ field: { onChange, value } }) => (
-								<Styled.Options>
-									{DefaultExtras.map((extra) => (
-										<Chip
-											key={extra.id}
-											selected={value.includes(extra.id)}
-											onPress={() => {
-												if (value.includes(extra.id)) {
-													onChange(value.filter((v: string) => v !== extra.id));
-												} else {
-													onChange([...value, extra.id]);
-												}
-											}}
-										>
-											{extra.name}
-										</Chip>
-									))}
-								</Styled.Options>
-							)}
-						/>
+						<Extras control={control} mode={EFormMode.EDIT} />
 					</Styled.FilterSection>
 				</Styled.Body>
 
