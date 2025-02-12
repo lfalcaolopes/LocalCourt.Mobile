@@ -32,7 +32,7 @@ const usersMock: IUser[] = [
 interface IAddress {
 	id: string;
 	street: string;
-	number: number;
+	number: string;
 	district: string;
 	addressComplement: string;
 	zipCode: string;
@@ -47,7 +47,7 @@ const addressesMock: IAddress[] = [
 	{
 		id: '1',
 		street: 'Rua 1',
-		number: 123,
+		number: '123',
 		district: 'District 1',
 		addressComplement: 'Complement 1',
 		zipCode: '12345-678',
@@ -60,7 +60,7 @@ const addressesMock: IAddress[] = [
 	{
 		id: '2',
 		street: 'Rua 2',
-		number: 456,
+		number: '456',
 		district: 'District 2',
 		addressComplement: 'Complement 2',
 		zipCode: '87654-321',
@@ -91,13 +91,13 @@ const courtsMock: ICourt[] = [
 	{
 		id: '1',
 		name: 'Court 1',
-		price: 50,
+		price: 50.55,
 		rating: 4.5,
-		modalities: ['Futebol', 'Vôlei', 'Basquete', 'Tênis'], // nao existe na entidade (nova entidade?)
-		additionals: ['Estacionamento', 'Vestiário'], // nao existe na entidade (nova entidade?)
+		modalities: ['1'], // nao existe na entidade (nova entidade?)
+		additionals: ['1', '2'], // nao existe na entidade (nova entidade?)
 		status: false, // nao existe na entidade
-		availabilityStart: '08:00', // nao existe na entidade (pensar em nomes melhores)
-		availabilityEnd: '22:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityStart: '2025-02-11T08:00:00-03:00', // nao existe na entidade (pensar em nomes melhores)
+		availabilityEnd: '2025-02-11T22:00:00-03:00', // nao existe na entidade (pensar em nomes melhores)
 		imagesUrl: [testImage, testImage], // nao existe na entidade
 		manager: usersMock[0], // nao existe na entidade
 		address: addressesMock[0]
