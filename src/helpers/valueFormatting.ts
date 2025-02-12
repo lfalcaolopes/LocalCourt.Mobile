@@ -17,4 +17,22 @@ const parsePrice = (value: string) => {
 	return rawValue / 100;
 };
 
-export { formatPrice, parsePrice };
+const formatZipCode = (value: string) => {
+	if (!value) return '';
+
+	const cleanValue = value.replace(/\D/g, '');
+	const match = cleanValue.match(/^(\d{0,5})(\d{0,3})$/);
+
+	if (!match) return '';
+
+	const [, firstPart, secondPart] = match;
+
+	if (!secondPart) return firstPart;
+	return `${firstPart}-${secondPart}`;
+};
+
+const parseZipCode = (value: string) => {
+	return value.replace(/\D/g, '');
+};
+
+export { formatPrice, formatZipCode, parsePrice, parseZipCode };
