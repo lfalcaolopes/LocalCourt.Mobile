@@ -1,3 +1,4 @@
+import { RootStackParamList } from '@/app';
 import SectionTitle from '@/components/atoms/sectionTitle';
 import CourtCard from '@/components/molecules/courtCard';
 import CourtsFilter from '@/components/organisms/courtsFilter';
@@ -6,6 +7,8 @@ import { ICourt, IRental, courtsMock, rentalsMock } from '@/helpers/mock';
 import { colors } from '@/styles/theme';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image } from 'react-native';
 import Lettering from '../../../assets/logo/Lettering.png';
@@ -15,6 +18,8 @@ function Homepage() {
 	const [lastRentals, setLastRentals] = useState<IRental[]>([]);
 	const [courts, setCourts] = useState<ICourt[]>([]);
 	const [filterIsVisible, setFilterIsVisible] = useState(false);
+
+	const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'Homepage'>>();
 
 	function getLastRentals() {
 		return rentalsMock;
@@ -38,7 +43,7 @@ function Homepage() {
 				<Styled.Header>
 					<Image source={Lettering} style={{ height: 16, width: 120 }} />
 
-					<Styled.Menu onPress={() => console.log('menu')}>
+					<Styled.Menu onPress={() => navigation.navigate('Menu')}>
 						<MaterialIcons name="menu" size={24} color={colors.gray[600]} />
 					</Styled.Menu>
 				</Styled.Header>
@@ -55,6 +60,7 @@ function Homepage() {
 								<CourtCard
 									court={item.court}
 									rental={item}
+									onPress={() => console.log('press')}
 									variant={ECourtCardVariant.DASHBOARD}
 									styleVariant={ECourtCardStyleVariant.VERTICAL}
 								/>
@@ -80,6 +86,7 @@ function Homepage() {
 							renderItem={({ item }) => (
 								<CourtCard
 									court={item}
+									onPress={() => navigation.navigate('Court', { court: item, isAdmin: false })}
 									variant={ECourtCardVariant.DASHBOARD}
 									styleVariant={ECourtCardStyleVariant.HORIZONTAL}
 								/>

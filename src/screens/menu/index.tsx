@@ -1,57 +1,61 @@
-import React, { ReactNode } from 'react';
-import { Text } from 'react-native';
+import React from 'react';
 
+import { RootStackParamList } from '@/app';
 import ArrowButton from '@/components/atoms/arrowButton';
 import Divisor from '@/components/atoms/divisor';
 import ProfileCard from '@/components/molecules/profileCard';
 import { colors } from '@/styles/theme';
 import Feather from '@expo/vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as Styled from './styles';
 
 interface IActionButton {
 	id: string;
 	name: string;
-	page: ReactNode;
+	pageName: Exclude<keyof RootStackParamList, 'Court'>;
 }
 
 const ActionButtons = [
 	{
 		id: '1',
 		name: 'Configuração',
-		page: <Text>Configuração</Text>
+		pageName: 'Menu'
 	},
 	{
 		id: '2',
 		name: 'Minhas Reservas',
-		page: <Text>Minhas Reservas</Text>
+		pageName: 'MyRentals'
 	},
 	{
 		id: '3',
 		name: 'Minhas Quadras',
-		page: <Text>Minhas Quadras</Text>
+		pageName: 'MyCourts'
 	},
 	{
 		id: '4',
 		name: 'Notificações',
-		page: <Text>Notificações</Text>
+		pageName: 'Menu'
 	},
 	{
 		id: '5',
 		name: 'Ajuda',
-		page: <Text>Ajuda</Text>
+		pageName: 'Menu'
 	},
 	{
 		id: '6',
 		name: 'Sobre o App',
-		page: <Text>Sobre o App</Text>
+		pageName: 'Menu'
 	}
 ] as IActionButton[];
 
 function Menu() {
+	const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'Menu'>>();
+
 	return (
 		<Styled.Container>
 			<Styled.Menu>
-				<ArrowButton onPress={() => console.log('back')} direction="left" />
+				<ArrowButton onPress={() => navigation.goBack()} direction="left" />
 
 				<ProfileCard />
 
@@ -59,7 +63,7 @@ function Menu() {
 
 				<Styled.Options>
 					{ActionButtons.map((x) => (
-						<Styled.Option key={x.id} onPress={() => console.log(x.name)}>
+						<Styled.Option key={x.id} onPress={() => navigation.navigate(x.pageName)}>
 							<Styled.OptionText>{x.name}</Styled.OptionText>
 							<Feather name="chevron-right" size={16} color={colors.gray[600]} />
 						</Styled.Option>
