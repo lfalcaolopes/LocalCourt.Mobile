@@ -17,6 +17,7 @@ interface CourtCardProps {
 	variant: ECourtCardVariant;
 	styleVariant: ECourtCardStyleVariant;
 	court: ICourt;
+	onPress: () => void;
 	rental?: IRental;
 }
 
@@ -24,7 +25,8 @@ function CourtCard({
 	variant = ECourtCardVariant.DASHBOARD,
 	styleVariant = ECourtCardStyleVariant.VERTICAL,
 	court,
-	rental
+	rental,
+	onPress
 }: CourtCardProps) {
 	const noShowModalities = court.modalities.length - 1;
 	const { rentalDate, rentalStartTime, rentalEndTime } = formatRentalDateTime(
@@ -32,12 +34,8 @@ function CourtCard({
 		rental?.duration ?? 0
 	);
 
-	function handleCardPress() {
-		console.log(variant, court.name, rental?.id);
-	}
-
 	return (
-		<Styled.Container onPress={handleCardPress} styleVariant={styleVariant}>
+		<Styled.Container onPress={onPress} styleVariant={styleVariant}>
 			<Styled.Preview source={court.imagesUrl[0]} />
 
 			<Styled.Content>
