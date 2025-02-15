@@ -75,7 +75,7 @@ function Court({ route }: CourtScreenProps) {
 			setValue('name', court.name);
 			setValue('availabilityStart', court.availabilityStart);
 			setValue('availabilityEnd', court.availabilityEnd);
-			setValue('price', formatPrice(court.price.toString()));
+			setValue('price', formatPrice(court.price));
 			setValue('modalities', court.modalities);
 			setValue('extras', court.additionals);
 			setValue('zipCode', court.address.zipCode);
@@ -122,7 +122,7 @@ function Court({ route }: CourtScreenProps) {
 						/>
 
 						<InfoCellPrice
-							value={court ? formatPrice(court.price.toString()) : undefined}
+							value={court ? formatPrice(court.price) : undefined}
 							control={control}
 							mode={formMode}
 							errorMessage={errors.addressComplement?.message}
@@ -153,7 +153,7 @@ function Court({ route }: CourtScreenProps) {
 							control={control}
 							mode={formMode}
 							errorMessage={errors.zipCode?.message}
-							formatter={formatZipCode}
+							inputMaskFormatter={formatZipCode}
 						/>
 					</Styled.InfoRow>
 					<Styled.InfoRow>
