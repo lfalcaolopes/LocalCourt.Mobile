@@ -4,6 +4,7 @@ import CourtCardDescription from '@/components/atoms/courtCardDescription';
 import CourtStatus from '@/components/atoms/courtStatus';
 import RentalStatus from '@/components/atoms/rentalStatus';
 import { formatRentalDateTime } from '@/helpers/dateFormating';
+import { DefaultModalities } from '@/helpers/defaultModalities';
 import {
 	ECourtCardStyleVariant,
 	ECourtCardVariant,
@@ -28,7 +29,10 @@ function CourtCard({
 	rental,
 	onPress
 }: CourtCardProps) {
-	const noShowModalities = court.modalities.length - 1;
+	const modalities = {
+		shownModality: DefaultModalities.find((modality) => modality.id === court.modalities[0]),
+		noShowModalities: court.modalities.length - 1
+	};
 	const { rentalDate, rentalStartTime, rentalEndTime } = formatRentalDateTime(
 		rental?.startRent ?? '',
 		rental?.duration ?? 0
@@ -56,7 +60,10 @@ function CourtCard({
 					{variant === ECourtCardVariant.DASHBOARD && (
 						<>
 							<CourtCardDescription type="rating">{court.rating.toFixed(1)}</CourtCardDescription>
-							<Styled.ModalitiesText>{`${court.modalities[0]} +${noShowModalities}`}</Styled.ModalitiesText>
+							<Styled.ModalitiesText>
+								{modalities.shownModality?.name}
+								{modalities.noShowModalities > 0 ? ` +${modalities.noShowModalities}` : ''}
+							</Styled.ModalitiesText>
 						</>
 					)}
 					{variant === ECourtCardVariant.MY_COURTS && (
