@@ -19,7 +19,7 @@ const Header = styled.View`
 `;
 
 const Title = styled.Text`
-	line-height: 24;
+	line-height: 24px;
 	font-family: ${fontFamily.semiBold};
 	font-size: 24px;
 	color: ${colors.gray[800]};
