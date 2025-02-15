@@ -1,20 +1,28 @@
-const formatPrice = (value: string) => {
-	if (!value) return '';
-
-	const cleanValue = value.replace(/\D/g, '');
-
-	// Convert stored string (e.g. "1234") to number (12.34) and format using Intl:
-	const numberValue = parseInt(cleanValue, 10) / 100;
+const formatPrice = (value: number): string => {
 	return new Intl.NumberFormat('pt-BR', {
 		style: 'currency',
-		currency: 'BRL'
-	}).format(numberValue);
+		currency: 'BRL',
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2
+	}).format(value);
 };
 
-const parsePrice = (value: string) => {
-	const rawValue = parseInt(value.replace(/\D/g, ''), 10) || 0;
+const parsePrice = (value: string): number => {
+	// Remove the "R$" symbol, spaces and thousands separators, then replace comma with period
+	const cleaned = value.replace('R$', '').trim().replace(/\./g, '').replace(',', '.');
 
-	return rawValue / 100;
+	return parseFloat(cleaned);
+};
+
+const priceMask = (value: string) => {
+	const onlyNumbers = Number(value.replace(/\D/g, ''));
+
+	return new Intl.NumberFormat('pt-BR', {
+		style: 'currency',
+		currency: 'BRL',
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2
+	}).format(onlyNumbers / 100);
 };
 
 const formatZipCode = (value: string) => {
@@ -35,4 +43,4 @@ const parseZipCode = (value: string) => {
 	return value.replace(/\D/g, '');
 };
 
-export { formatPrice, formatZipCode, parsePrice, parseZipCode };
+export { formatPrice, formatZipCode, parsePrice, parseZipCode, priceMask };

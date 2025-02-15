@@ -12,7 +12,7 @@ interface InfoCellProps<T extends FieldValues> {
 	control?: Control<T>;
 	formName?: keyof T;
 	errorMessage?: string;
-	formatter?: (value: string) => string;
+	inputMaskFormatter?: (value: string) => string;
 }
 
 function InfoCell<T extends FieldValues>({
@@ -21,7 +21,7 @@ function InfoCell<T extends FieldValues>({
 	control,
 	formName,
 	errorMessage,
-	formatter,
+	inputMaskFormatter,
 	mode = EFormMode.VIEW
 }: InfoCellProps<T>) {
 	return (
@@ -35,7 +35,7 @@ function InfoCell<T extends FieldValues>({
 					name={formName}
 					placeholder={label}
 					errorMessage={errorMessage}
-					formatter={formatter}
+					inputMaskFormatter={inputMaskFormatter}
 				/>
 			)}
 		</Styled.Container>

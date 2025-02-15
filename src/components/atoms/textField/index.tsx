@@ -13,7 +13,7 @@ export interface TextFieldProps<T extends FieldValues> extends TextInputProps {
 	placeholder?: string;
 	showError?: boolean;
 	errorMessage?: string;
-	formatter?: (value: string) => string;
+	inputMaskFormatter?: (value: string) => string;
 }
 
 function TextField<T extends FieldValues>({
@@ -24,7 +24,7 @@ function TextField<T extends FieldValues>({
 	iconPosition = 'left',
 	showError = true,
 	errorMessage,
-	formatter,
+	inputMaskFormatter,
 	...props
 }: TextFieldProps<T>) {
 	const inputRef = useRef<TextInput>(null);
@@ -40,8 +40,8 @@ function TextField<T extends FieldValues>({
 					render={({ field: { onChange, value } }) => (
 						<Styled.TextInput
 							ref={inputRef}
-							onChangeText={(text: string) => onChange(formatter ? formatter(text) : text)}
-							value={formatter ? formatter(value) : value}
+							onChangeText={onChange}
+							value={inputMaskFormatter ? inputMaskFormatter(value) : value}
 							placeholder={placeholder}
 							placeholderTextColor={colors.gray[400]}
 							{...props}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import TextField from '@/components/atoms/textField';
 import { EFormMode } from '@/helpers/enums';
-import { formatPrice } from '@/helpers/valueFormatting';
+import { priceMask } from '@/helpers/valueFormatting';
 import { Control, FieldValues } from 'react-hook-form';
 import * as Styled from './styles';
 
@@ -35,7 +35,7 @@ function InfoCellPrice<T extends FieldValues>({
 						name="price"
 						placeholder="R$ 0,00"
 						errorMessage={errorMessage}
-						formatter={formatPrice}
+						inputMaskFormatter={priceMask}
 						keyboardType="numeric"
 					/>
 				</Styled.Container>
