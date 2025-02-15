@@ -20,8 +20,7 @@ function ProfileCard() {
 
 		const currentUser = getUser();
 
-		setTimeout(() => setIsLoading(false), 2000);
-
+		setIsLoading(false);
 		setCurrentUser(currentUser);
 	}, []);
 
