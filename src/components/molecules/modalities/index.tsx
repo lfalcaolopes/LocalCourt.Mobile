@@ -7,7 +7,7 @@ import { Control, Controller, FieldValues, Path, PathValue } from 'react-hook-fo
 import * as Styled from './styles';
 
 interface ModalitiesProps<T extends FieldValues> {
-	control: Control<T>;
+	control?: Control<T>;
 	mode?: EFormMode;
 	selectedModalities?: string[];
 }
@@ -24,6 +24,18 @@ function Modalities<T extends FieldValues>({
 				: DefaultModalities,
 		[mode]
 	);
+
+	if (!control) {
+		return (
+			<Styled.Options>
+				{displayedModalities.map((modality) => (
+					<Chip key={modality.id} icon={modality.icon || undefined}>
+						{modality.name}
+					</Chip>
+				))}
+			</Styled.Options>
+		);
+	}
 
 	return (
 		<Controller

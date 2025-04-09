@@ -7,7 +7,7 @@ import { Control, Controller, FieldValues, Path, PathValue } from 'react-hook-fo
 import * as Styled from './styles';
 
 interface ExtrasProps<T extends FieldValues> {
-	control: Control<T>;
+	control?: Control<T>;
 	mode?: EFormMode;
 	selectedExtras?: string[];
 }
@@ -24,6 +24,16 @@ function Extras<T extends FieldValues>({
 				: DefaultExtras,
 		[mode]
 	);
+
+	if (!control) {
+		return (
+			<Styled.Options>
+				{displayedExtras.map((extra) => (
+					<Chip key={extra.id}>{extra.name}</Chip>
+				))}
+			</Styled.Options>
+		);
+	}
 
 	return (
 		<Controller
