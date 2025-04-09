@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { RootStackParamList } from '@/app';
 import { ArrowButton, Button, Divisor } from '@/components/atoms';
+import CourtStatusButton from '@/components/atoms/courtStatusButton';
 import Extras from '@/components/molecules/extras';
 import ImageCarousel from '@/components/molecules/imageCarousel';
 import InfoCell from '@/components/molecules/infoCell';
 import InfoCellAvailability from '@/components/molecules/infoCellAvailability';
 import InfoCellPrice from '@/components/molecules/infoCellPrice';
 import Modalities from '@/components/molecules/modalities';
-import { EButtonVariant, EFormMode } from '@/helpers/enums';
+import { EButtonVariant, ECourtStatus, EFormMode } from '@/helpers/enums';
 import { formatPrice, formatZipCode } from '@/helpers/valueFormatting';
 import { zodErrors } from '@/helpers/zodErrors';
 import { colors } from '@/styles/theme';
@@ -220,11 +221,12 @@ function Court({ route }: CourtScreenProps) {
 					</Styled.InfoRow>
 				</Styled.Info>
 
-				{formMode === EFormMode.VIEW && isAdmin && (
+				{formMode === EFormMode.VIEW && court && isAdmin && (
 					<Styled.AdminButtons>
-						<Button fullWidth onClick={() => console.log('inativa')} color={colors.error}>
-							Inativar
-						</Button>
+						<CourtStatusButton
+							status={court.status ? ECourtStatus.ACTIVE : ECourtStatus.INACTIVE}
+							courtId={court.id}
+						/>
 						<Button
 							fullWidth
 							onClick={enableEditMode}
