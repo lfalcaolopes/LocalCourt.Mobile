@@ -1,3 +1,4 @@
+import { addHours, parseISO } from 'date-fns';
 import { format, toZonedTime } from 'date-fns-tz';
 
 function formatRentalDateTime(dateTimeString: string, duration: number) {
@@ -34,4 +35,14 @@ const formatTimeTo24Hour = (date: Date): string => {
 	});
 };
 
-export { convertToSaoPauloTime, formatRentalDateTime, formatTimeTo24Hour };
+const formatTimeRange = (startDateString: string, duration: number): string => {
+	const startDate = parseISO(startDateString);
+	const endDate = addHours(startDate, duration);
+
+	const startTime = format(startDate, 'HH:mm');
+	const endTime = format(endDate, 'HH:mm');
+
+	return `${startTime} - ${endTime}`;
+};
+
+export { convertToSaoPauloTime, formatRentalDateTime, formatTimeRange, formatTimeTo24Hour };
