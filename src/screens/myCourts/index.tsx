@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { RootStackParamList } from '@/app';
-import { ArrowButton } from '@/components/atoms';
 import { CourtCard } from '@/components/molecules';
+import TitledHeader from '@/components/molecules/titledHeader';
 import { ECourtCardStyleVariant, ECourtCardVariant } from '@/helpers/enums';
 import { ICourt, courtsMock } from '@/helpers/mock';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { View } from 'react-native';
 import * as Styled from './styles';
 
 function MyCourts() {
@@ -28,11 +27,7 @@ function MyCourts() {
 	return (
 		<Styled.Container>
 			<Styled.Header>
-				<Styled.TitleHeader>
-					<ArrowButton onPress={() => navigation.goBack()} />
-					<Styled.Title>Minhas Quadras</Styled.Title>
-					<View style={{ width: 24 }} />
-				</Styled.TitleHeader>
+				<TitledHeader title="Minhas Quadras" />
 				<Styled.Description>
 					Gerencie as quadras que você cadastrou: veja detalhes, edite informações e controle a
 					disponibilidade para reservas
