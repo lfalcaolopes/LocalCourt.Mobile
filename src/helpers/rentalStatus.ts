@@ -8,7 +8,7 @@ const rentalStatusMap = {
 	},
 	[ERentalStatus.AWAITING_PAYMENT]: {
 		color: colors.warning,
-		text: 'Aguardando pagamento'
+		text: 'Pendente'
 	},
 	[ERentalStatus.CANCELLED]: {
 		color: colors.error,

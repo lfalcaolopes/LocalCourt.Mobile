@@ -30,7 +30,7 @@ function ProfileCard() {
 				<Skeleton />
 			) : (
 				<Styled.Info>
-					{!currentUser?.image ? (
+					{currentUser?.image ? (
 						<Styled.Image source={{ uri: currentUser?.image }} />
 					) : (
 						<Styled.DefaultImage>
