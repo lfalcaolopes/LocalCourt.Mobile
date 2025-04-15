@@ -1,22 +1,16 @@
 import { colors, fontFamily } from '@/styles/theme';
-import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-const Container = styled(ScrollView).attrs({
-	contentContainerStyle: {
-		display: 'flex',
-		gap: 24,
-		padding: 16,
-		paddingTop: 8
-	}
-})``;
+const Container = styled.View`
+	padding: 16px;
+	padding-top: 8px;
+`;
 
 const Header = styled.View`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${colors.gray[100]};
 	padding-bottom: 16px;
 `;
 
@@ -24,31 +18,15 @@ const Menu = styled.TouchableOpacity`
 	padding: 8px;
 `;
 
-const Body = styled(ScrollView).attrs({
-	contentContainerStyle: {
-		display: 'flex',
-		gap: 30
-	}
-})``;
+const ListHeader = styled.View`
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+`;
 
 const RentalSection = styled.View`
 	display: flex;
 	gap: 20px;
-`;
-
-const Rentals = styled(ScrollView).attrs({
-	horizontal: true,
-	contentContainerStyle: {
-		display: 'flex',
-		flexDirection: 'row',
-		gap: 12
-	}
-})``;
-
-const CourtSection = styled.View`
-	display: flex;
-	gap: 20px;
-	padding-bottom: 60px;
 `;
 
 const CourtSectionHeader = styled.View`
@@ -67,7 +45,7 @@ const CourtsFilter = styled.Pressable`
 
 const Filter = styled.Text`
 	font-family: ${fontFamily.semiBold};
-	font-size: 12px;
+	font-size: 14px;
 	color: ${colors.gray[800]};
 `;
 
@@ -102,17 +80,15 @@ const MapText = styled.Text`
 `;
 
 export {
-	Body,
 	Container,
-	CourtSection,
 	CourtSectionHeader,
 	Courts,
 	CourtsFilter,
 	Filter,
 	Header,
+	ListHeader,
 	Map,
 	MapText,
 	Menu,
-	RentalSection,
-	Rentals
+	RentalSection
 };

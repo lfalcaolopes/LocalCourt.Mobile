@@ -37,8 +37,8 @@ function Rental({ route }: RentalScreenProps) {
 
 			<Styled.Info>
 				<Styled.InfoRow>
-					<Styled.InfoText>{formattedDate}</Styled.InfoText>
-					<RentalStatus status={rental.status as ERentalStatus} />
+					<Styled.InfoTextBold>{formattedDate}</Styled.InfoTextBold>
+					<RentalStatus large status={rental.status as ERentalStatus} />
 				</Styled.InfoRow>
 				<Styled.InfoRow>
 					<Styled.InfoText>{formatTimeRange(rental.startRent, rental.duration)}</Styled.InfoText>

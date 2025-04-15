@@ -6,12 +6,17 @@ import * as Styled from './styles';
 
 interface RentalStatusProps {
 	status: ERentalStatus;
+	large?: boolean;
 }
 
-function RentalStatus({ status }: RentalStatusProps) {
+function RentalStatus({ status, large = false }: RentalStatusProps) {
 	const statusMap = rentalStatusMap[status];
 
-	return <Styled.StatusText color={statusMap.color}>{statusMap.text}</Styled.StatusText>;
+	return (
+		<Styled.StatusText color={statusMap.color} large={large}>
+			{statusMap.text}
+		</Styled.StatusText>
+	);
 }
 
 export default RentalStatus;

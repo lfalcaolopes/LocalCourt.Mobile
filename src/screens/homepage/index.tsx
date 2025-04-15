@@ -15,14 +15,14 @@ import Lettering from '../../../assets/logo/Lettering.png';
 import * as Styled from './styles';
 
 function Homepage() {
-	const [lastRentals, setLastRentals] = useState<IRental[]>([]);
+	const [lastRental, setLastRental] = useState<IRental>();
 	const [courts, setCourts] = useState<ICourt[]>([]);
 	const [filterIsVisible, setFilterIsVisible] = useState(false);
 
 	const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'Homepage'>>();
 
-	function getLastRentals() {
-		return rentalsMock;
+	function getLastRental() {
+		return rentalsMock[0];
 	}
 
 	function getCourts() {
@@ -30,16 +30,16 @@ function Homepage() {
 	}
 
 	useEffect(() => {
-		const rentals = getLastRentals();
+		const rental = getLastRental();
 		const courts = getCourts();
 
-		setLastRentals(rentals);
+		setLastRental(rental);
 		setCourts(courts);
 	}, []);
 
 	return (
 		<>
-			<Styled.Container stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
+			<Styled.Container>
 				<Styled.Header>
 					<Image source={Lettering} style={{ height: 16, width: 120 }} />
 
@@ -47,54 +47,49 @@ function Homepage() {
 						<MaterialIcons name="menu" size={24} color={colors.gray[600]} />
 					</Styled.Menu>
 				</Styled.Header>
-				<Styled.Body>
-					<Styled.RentalSection>
-						<SectionTitle>Suas Últimas Reservas</SectionTitle>
+				<FlatList
+					data={courts}
+					keyExtractor={(item) => item.id}
+					showsHorizontalScrollIndicator={false}
+					ListHeaderComponent={() => (
+						<Styled.ListHeader>
+							{lastRental && (
+								<Styled.RentalSection>
+									<SectionTitle>Última Reserva</SectionTitle>
 
-						<FlatList
-							data={lastRentals}
-							horizontal
-							keyExtractor={(item) => item.id}
-							showsHorizontalScrollIndicator={false}
-							renderItem={({ item }) => (
-								<CourtCard
-									court={item.court}
-									rental={item}
-									onPress={() => console.log('press')}
-									variant={ECourtCardVariant.DASHBOARD}
-									styleVariant={ECourtCardStyleVariant.VERTICAL}
-								/>
+									<CourtCard
+										court={lastRental.court}
+										rental={lastRental}
+										onPress={() =>
+											navigation.navigate('Court', { court: lastRental.court, isAdmin: false })
+										}
+										variant={ECourtCardVariant.DASHBOARD}
+										styleVariant={ECourtCardStyleVariant.HORIZONTAL}
+									/>
+								</Styled.RentalSection>
 							)}
-							contentContainerStyle={{ gap: 12 }}
+
+							<Styled.CourtSectionHeader>
+								<SectionTitle>Encontre Sua Quadra</SectionTitle>
+
+								<Styled.CourtsFilter onPress={() => setFilterIsVisible(true)}>
+									<Feather name="filter" size={16} color={colors.acent} />
+
+									<Styled.Filter>Filtrar</Styled.Filter>
+								</Styled.CourtsFilter>
+							</Styled.CourtSectionHeader>
+						</Styled.ListHeader>
+					)}
+					contentContainerStyle={{ gap: 12, paddingBottom: 120 }}
+					renderItem={({ item }) => (
+						<CourtCard
+							court={item}
+							onPress={() => navigation.navigate('Court', { court: item, isAdmin: false })}
+							variant={ECourtCardVariant.DASHBOARD}
+							styleVariant={ECourtCardStyleVariant.VERTICAL}
 						/>
-					</Styled.RentalSection>
-					<Styled.CourtSection>
-						<Styled.CourtSectionHeader>
-							<SectionTitle>Encontre Sua Quadra</SectionTitle>
-
-							<Styled.CourtsFilter onPress={() => setFilterIsVisible(true)}>
-								<Feather name="filter" size={16} color={colors.acent} />
-
-								<Styled.Filter>Filtrar</Styled.Filter>
-							</Styled.CourtsFilter>
-						</Styled.CourtSectionHeader>
-
-						<FlatList
-							data={courts}
-							keyExtractor={(item) => item.id}
-							showsHorizontalScrollIndicator={false}
-							renderItem={({ item }) => (
-								<CourtCard
-									court={item}
-									onPress={() => navigation.navigate('Court', { court: item, isAdmin: false })}
-									variant={ECourtCardVariant.DASHBOARD}
-									styleVariant={ECourtCardStyleVariant.HORIZONTAL}
-								/>
-							)}
-							contentContainerStyle={{ gap: 12 }}
-						/>
-					</Styled.CourtSection>
-				</Styled.Body>
+					)}
+				/>
 			</Styled.Container>
 
 			<CourtsFilter isVisible={filterIsVisible} onClose={() => setFilterIsVisible(false)} />

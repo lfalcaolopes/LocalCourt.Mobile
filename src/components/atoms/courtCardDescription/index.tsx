@@ -12,10 +12,10 @@ interface CourtCardDescriptionProps {
 
 function CourtCardDescription({ type, children }: CourtCardDescriptionProps) {
 	return (
-		<Styled.Container>
+		<Styled.Container isRating={type === 'rating'}>
 			<Styled.Icon>
-				{type === 'location' && <FontAwesome6 name="location-dot" size={10} color={colors.acent} />}
-				{type === 'price' && <FontAwesome6 name="money-bill" size={10} color={colors.acent} />}
+				{type === 'location' && <FontAwesome6 name="location-dot" size={12} color={colors.acent} />}
+				{type === 'price' && <FontAwesome6 name="money-bill" size={12} color={colors.acent} />}
 				{type === 'rating' && <FontAwesome name="star" size={12} color="#EBC351" />}
 			</Styled.Icon>
 			<Styled.Text numberOfLines={1} ellipsizeMode="tail" isRating={type === 'rating'}>

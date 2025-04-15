@@ -11,13 +11,13 @@ const Container = styled.View`
 const Title = styled.Text`
 	white-space: nowrap;
 	font-family: ${fontFamily.semiBold};
-	color: ${colors.gray[900]};
-	font-size: 16px;
+	color: ${colors.gray[800]};
+	font-size: 20px;
 `;
 
 const Divider = styled.View`
 	width: 100%;
-	max-width: 80px;
+	max-width: 40px;
 	height: 1px;
 	border-radius: 1px;
 	background-color: ${colors.acent};

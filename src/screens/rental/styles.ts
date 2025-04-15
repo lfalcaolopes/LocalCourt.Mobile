@@ -27,7 +27,7 @@ const InfoRow = styled.View`
 
 const InfoText = styled.Text`
 	font-family: ${fontFamily.regular};
-	font-size: 12px;
+	font-size: 14px;
 	color: ${colors.gray[800]};
 `;
 

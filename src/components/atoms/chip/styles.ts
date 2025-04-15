@@ -17,14 +17,14 @@ const Container = styled.View<SelectedProps>`
 `;
 
 const Icon = styled.Image`
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
 `;
 
 const Text = styled.Text`
 	height: 16px;
 	font-family: ${fontFamily.semiBold};
-	font-size: 10px;
+	font-size: 12px;
 	color: ${colors.gray[700]};
 `;
 

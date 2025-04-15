@@ -38,7 +38,7 @@ const Name = styled.Text`
 `;
 const ShowMore = styled.Text`
 	font-family: ${fontFamily.regular};
-	font-size: 10px;
+	font-size: 12px;
 	color: ${colors.gray[800]};
 `;
 

@@ -3,22 +3,16 @@ import styled from 'styled-components/native';
 
 const Container = styled.View`
 	padding: 16px;
-	gap: 40px;
 `;
 
-const Header = styled.View`
-	gap: 28px;
-`;
+const Header = styled.View``;
+
 const Description = styled.Text`
 	font-family: ${fontFamily.regular};
-	font-size: 12px;
+	font-size: 14px;
 	color: ${colors.gray[800]};
 
 	text-align: center;
 `;
 
-const Courts = styled.View`
-	gap: 8px;
-`;
-
-export { Container, Courts, Description, Header };
+export { Container, Description, Header };

@@ -14,7 +14,7 @@ const Carousel = styled.View`
 `;
 
 const Info = styled.View`
-	gap: 4px;
+	gap: 8px;
 `;
 
 const InfoRow = styled.View`

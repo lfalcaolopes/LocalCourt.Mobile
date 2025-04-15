@@ -33,26 +33,28 @@ function CourtCard({
 		shownModality: DefaultModalities.find((modality) => modality.id === court.modalities[0]),
 		noShowModalities: court.modalities.length - 1
 	};
-	const { rentalDate, rentalStartTime, rentalEndTime } = formatRentalDateTime(
+	const { rentalDate, rentalStartTime } = formatRentalDateTime(
 		rental?.startRent ?? '',
 		rental?.duration ?? 0
 	);
 
 	return (
 		<Styled.Container onPress={onPress} styleVariant={styleVariant}>
-			<Styled.Preview source={court.imagesUrl[0]} />
+			<Styled.Preview source={court.imagesUrl[0]} styleVariant={styleVariant} />
 
-			<Styled.Content>
+			<Styled.Content styleVariant={styleVariant}>
 				<Styled.Info>
 					<Styled.Title>{court.name}</Styled.Title>
-					<CourtCardDescription type="location">
-						{`${court.address.district}, ${court.address.city}`}
-					</CourtCardDescription>
-					<CourtCardDescription type="price">
-						{variant === ECourtCardVariant.MY_RENTALS
-							? `R$ ${rental?.price.toFixed(2).replace('.', ',')}`
-							: `A partir de R$ ${court.price.toFixed(2).replace('.', ',')}/h`}
-					</CourtCardDescription>
+					<Styled.Description>
+						<CourtCardDescription type="location">
+							{`${court.address.district}, ${court.address.city}`}
+						</CourtCardDescription>
+						<CourtCardDescription type="price">
+							{variant === ECourtCardVariant.MY_RENTALS
+								? `R$ ${rental?.price.toFixed(2).replace('.', ',')}`
+								: `A partir de R$ ${court.price.toFixed(2).replace('.', ',')}/h`}
+						</CourtCardDescription>
+					</Styled.Description>
 				</Styled.Info>
 
 				{/* row reversed */}
@@ -74,9 +76,7 @@ function CourtCard({
 					{variant === ECourtCardVariant.MY_RENTALS && (
 						<>
 							<RentalStatus status={rental?.status as ERentalStatus} />
-							<Styled.DateText>
-								{`${rentalDate} ${rentalStartTime} - ${rentalEndTime}`}
-							</Styled.DateText>
+							<Styled.DateText>{`${rentalDate} ${rentalStartTime}`}</Styled.DateText>
 						</>
 					)}
 				</Styled.AdditionalInfo>

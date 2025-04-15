@@ -33,7 +33,7 @@ const Description = styled.Text`
 	width: 250px;
 	font-family: ${fontFamily.regular};
 	color: ${colors.gray[600]};
-	font-size: 12px;
+	font-size: 14px;
 	text-align: center;
 `;
 
