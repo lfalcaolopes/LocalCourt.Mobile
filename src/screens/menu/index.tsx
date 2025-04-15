@@ -13,7 +13,7 @@ import * as Styled from './styles';
 interface IActionButton {
 	id: string;
 	name: string;
-	pageName: Exclude<keyof RootStackParamList, 'Court'>;
+	pageName: Exclude<keyof RootStackParamList, 'Court' | 'Rental'>;
 }
 
 const ActionButtons = [
