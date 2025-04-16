@@ -69,7 +69,7 @@ function Menu() {
 						</Styled.Option>
 					))}
 
-					<Styled.Option onPress={() => console.log('sair')}>
+					<Styled.Option onPress={() => navigation.navigate('Welcome')}>
 						<Styled.OptionText>Sair</Styled.OptionText>
 					</Styled.Option>
 				</Styled.Options>

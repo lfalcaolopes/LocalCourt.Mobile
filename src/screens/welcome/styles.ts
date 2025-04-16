@@ -1,11 +1,14 @@
 import { colors, fontFamily } from '@/styles/theme';
+import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-const Container = styled.View`
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-`;
+const Container = styled(ScrollView).attrs({
+	contentContainerStyle: {
+		display: 'flex',
+		flexDirection: 'column',
+		flexGrow: 1
+	}
+})``;
 
 const Header = styled.View`
 	margin: 40px auto;

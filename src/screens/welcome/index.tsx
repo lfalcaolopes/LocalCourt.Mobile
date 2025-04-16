@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Image } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform } from 'react-native';
 
 import LogoAndLettering from '../../../assets/logo/LogoAndLettering.png';
 
@@ -22,36 +22,42 @@ function Welcome() {
 	const [selectedForm, setSelectedForm] = useState(actionButtons[0].id);
 
 	return (
-		<Styled.Container>
-			<Styled.Header>
-				<Image source={LogoAndLettering} style={{ height: 50, width: 200 }} />
+		<KeyboardAvoidingView
+			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+			style={{ flex: 1 }}
+			keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+		>
+			<Styled.Container>
+				<Styled.Header>
+					<Image source={LogoAndLettering} style={{ height: 50, width: 200 }} />
 
-				<Styled.Info>
-					<Styled.Title>Bem Vindo ao LocalCourt</Styled.Title>
-					<Styled.Description>
-						Entre ou crie sua conta agora e comece a reservar as melhores quadras da sua região
-					</Styled.Description>
-				</Styled.Info>
-			</Styled.Header>
+					<Styled.Info>
+						<Styled.Title>Bem Vindo ao LocalCourt</Styled.Title>
+						<Styled.Description>
+							Entre ou crie sua conta agora e comece a reservar as melhores quadras da sua região
+						</Styled.Description>
+					</Styled.Info>
+				</Styled.Header>
 
-			<Styled.Buttons>
-				{actionButtons.map((button) => (
-					<Styled.Button
-						key={button.id}
-						isSelected={selectedForm === button.id}
-						onPress={() => setSelectedForm(button.id)}
-					>
-						<Styled.ButtonText isSelected={selectedForm === button.id}>
-							{button.name}
-						</Styled.ButtonText>
-					</Styled.Button>
-				))}
-			</Styled.Buttons>
+				<Styled.Buttons>
+					{actionButtons.map((button) => (
+						<Styled.Button
+							key={button.id}
+							isSelected={selectedForm === button.id}
+							onPress={() => setSelectedForm(button.id)}
+						>
+							<Styled.ButtonText isSelected={selectedForm === button.id}>
+								{button.name}
+							</Styled.ButtonText>
+						</Styled.Button>
+					))}
+				</Styled.Buttons>
 
-			<Styled.FormContainer>
-				{actionButtons.find((button) => button.id === selectedForm)?.form}
-			</Styled.FormContainer>
-		</Styled.Container>
+				<Styled.FormContainer>
+					{actionButtons.find((button) => button.id === selectedForm)?.form}
+				</Styled.FormContainer>
+			</Styled.Container>
+		</KeyboardAvoidingView>
 	);
 }
 

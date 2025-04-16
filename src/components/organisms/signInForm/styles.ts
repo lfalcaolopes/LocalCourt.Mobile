@@ -5,6 +5,7 @@ const Container = styled.View`
 	flex-direction: column;
 	flex: 1;
 	justify-content: space-between;
+	min-height: 300px;
 `;
 
 const Fields = styled.View`
